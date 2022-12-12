@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teste</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        {% for niv in nivel %}
+            {% if niv.status == 'adm' %}
+                <h1>Você é um adm</h1>
+                <a href="{% url 'logout' %}">Deslogar</a>
+            {% elif niv.status == 'ges' %}
+                <h1>Você é um gestor</h1>
+                <a href="{% url 'logout' %}">Deslogar</a>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <a href="{% url 'loguin' %}">Loguin</a>
+        <a href="{% url 'cadastro' %}">Cadastro</a>
+    {% endif %}
+
+    
+</body>
+</html>
